@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { DynamicDataListComponent } from './dynamic-data-list.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('DynamicDataListComponent', () => {
+  let component: DynamicDataListComponent;
+  let fixture: ComponentFixture<DynamicDataListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent]
+      imports: [DynamicDataListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(DynamicDataListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,20 @@
+/* .container{
+    direction: rtl;
+} */
+
+.body{
+    height: 100vh;
+    background-color: #283340;
+    color: lightsalmon;
+}
+
+.list {
+    list-style: none;
+    margin-block: 0;
+}
+.bg-p{
+    background-color: #4834d4;
+}
+.ms-6{
+    margin-left: 7%;
+}

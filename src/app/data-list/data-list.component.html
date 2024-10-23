@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<div class="body">
+    <div class="w-100 bg-p text-light  mb-3 p-3 ">
+        <span class="ms-6 fw-bold me-2"> Selected Items Path: </span> 
+      <span *ngFor="let title of path_array; let i = index" >{{ title }}
+        <span *ngIf="i < path_array.length - 1" class="m-2"> > </span>
+      </span>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <h3 class="text-white my-3">Parents</h3>
+                <div class="list-group">
+                  <a
+                    *ngFor="let item of data; let i = index"
+                    class="list-group-item list-group-item-action"
+                    [ngStyle]=" { 'background-color': parent_background_color(i) } "
+                    (click)="select_parent_item(i)"
+                  >
+                    <ul class="row list">
+                      <li class="col-auto d-flex align-items-center">id: {{item.id}}</li>
+                      <li class="col-auto d-flex align-items-center">Title: {{item.title}}</li>
+                      <li class="col-auto d-flex align-items-center">
+                        <span >parent: null</span>
+                      </li>
+                      <li class="col-auto">
+                        <span *ngIf="item.children?.length > 0">></span>
+                      </li>
+                    </ul>
+                  </a>
+                </div>
+              </div>
+
+
+
+            
+                <div class="col-4" *ngIf="parent_index >= 0">
+                    <h3 class=" text-white my-3">Children</h3>
+                    <div class="list-group">
+                      <a
+                        *ngFor="let item of data[parent_index].children; let i = index"
+                        class="list-group-item list-group-item-action"
+                       (click)="select_cildren_item(i)"
+                       [ngStyle]=" { 'background-color': children_background_color(i) } "
+                      >
+                        <ul class="row list">
+                          <li class="col-auto d-flex align-items-center">id: {{item.id}}</li>
+                          <li class="col-auto d-flex align-items-center">Title: {{item.title}}</li>
+                          <li class="col-auto d-flex align-items-center">
+                            <span >parent: {{item.parent_id}}</span>
+                          </li>
+                          <li class="col-auto">
+                            <span *ngIf="item.children?.length > 0">></span>
+                          </li>
+                        </ul>
+                      </a>
+                    </div>
+                  </div>
+           
+
+
+
+              <div class="col-4"  *ngIf="children_index >= 0">
+                <h3 class=" text-white my-3">grandChildren</h3>
+                <div class="list-group">
+                  <a
+                    *ngFor="let item of data[parent_index].children[children_index].children; let i = index"
+                    class="list-group-item list-group-item-action"
+                   [ngStyle]=" { 'background-color': grandchild_background_color(i) } "
+                   (click)="select_grandchild_item(i)"
+                  >
+                    <ul class="row list">
+                      <li class="col-auto d-flex align-items-center">id: {{item.id}}</li>
+                      <li class="col-auto d-flex align-items-center">Title: {{item.title}}</li>
+                      <li class="col-auto d-flex align-items-center">
+                        <span >parent: {{item.parent_id}}</span>
+                      </li>
+                      <li class="col-auto">
+                        <span *ngIf="item.children?.length > 0">></span>
+                      </li>
+                    </ul>
+                  </a>
+                </div>
+              </div>
+
+            
+        </div>
+    </div>
+</div>
+

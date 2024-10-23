@@ -1,0 +1,39 @@
+<div class="body">
+  <div class="w-100 bg-p text-light mb-3 p-3">
+    <span class="ms-6 fw-bold me-2 fs-4"> Selected Items Path: </span> 
+    <span *ngFor="let title of path_array; let i = index">{{ title }}
+      <span *ngIf="i < path_array.length - 1" class="m-2"> > </span>
+    </span>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <!-- Recursive List -->
+      <ng-container *ngFor="let level of data_array; let levelIndex = index">
+        <div class="col-4">
+          <h3 class="text-white my-3">Level {{ levelIndex + 1 }}</h3>
+          <div class="list-group">
+            <a
+              *ngFor="let item of level; let i = index"
+              class="list-group-item list-group-item-action"
+              [ngStyle]="{ 'background-color': isActive(levelIndex, i) }"
+              (click)="selectItem(levelIndex, i)"
+            >
+              <ul class="row list">
+                <li class="col-auto d-flex align-items-center">id: {{ item.id }}</li>
+                <li class="col-auto d-flex align-items-center">Title: {{ item.title }}</li>
+                <li class="col-auto d-flex align-items-center">
+                  <span>parent: {{ item.parent_id || 'null' }}</span>
+                </li>
+                <li class="col-auto">
+                  <span *ngIf="item.children?.length > 0">></span>
+                </li>
+              </ul>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
