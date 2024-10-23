@@ -1,5 +1,5 @@
 # Questions25_2024.
-<<<<<<< HEAD
+<<<<<<< HEADefjipejodwkodpjihoefwrjfeoqk
 the merge of ali and mamad 
 >>>>>>> aliali
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
